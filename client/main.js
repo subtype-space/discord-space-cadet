@@ -29,7 +29,7 @@ async function setupDiscordSdk() {
   // Note: We need to prefix our backend `/api/token` route with `/.proxy` to stay compliant with the CSP.
   // Read more about constructing a full URL and using external resources at
   // https://discord.com/developers/docs/activities/development-guides/networking#construct-a-full-url
-  const response = await fetch("/.proxy/api/token", {
+  const response = await fetch("/.proxy/discord/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -49,12 +49,3 @@ async function setupDiscordSdk() {
     throw new Error("Authenticate command failed")
   }
 }
-
-
-
-document.querySelector("#app").innerHTML = `
-  <div>
-    <img src="${rocketLogo}" class="logo" alt="Discord" />
-    <h1>Hello, World!</h1>
-  </div>
-`
