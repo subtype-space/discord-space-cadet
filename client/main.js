@@ -1,8 +1,5 @@
 import { DiscordSDK } from "@discord/embedded-app-sdk"
 
-import rocketLogo from "/rocket.png"
-import "./style.css"
-
 // Will eventually store the authenticated user's access_token
 let auth
 
@@ -22,14 +19,14 @@ async function setupDiscordSdk() {
     response_type: "code",
     state: "",
     prompt: "none",
-    scope: ["identify", "guilds", "applications.commands"],
+    scope: ["identify", "guilds", "applications.commands"]
   })
 
   // Retrieve an access_token from your activity's server
   // Note: We need to prefix our backend `/api/token` route with `/.proxy` to stay compliant with the CSP.
   // Read more about constructing a full URL and using external resources at
   // https://discord.com/developers/docs/activities/development-guides/networking#construct-a-full-url
-  const response = await fetch("/.proxy/discord/token", {
+  const response = await fetch("/.proxy/api/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
